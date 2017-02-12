@@ -72,7 +72,7 @@ def random_flip(image,steering):
 def get_random_image_steering(X_train,Y_train,show_figure=False):    
     i = np.random.randint(0,len(Y_train))
     image,steering =  plt.imread(X_train[i]), Y_train[i]   
-    #image,steering = random_shear(image,steering,shear_range=100)
+
     image,steering = random_shift_crop(image,steering)   
     image,steering = random_flip(image,steering)    
     image = random_brightness(image)
