@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 [image3]: ./examples/crop_resize.png "Cropped unneccessary area and resized to 64x64"
 [image4]: ./examples/Flip.png "Flipped image"
 [image5]: ./examples/random_brightness.png "Random brightness applied"
-
+[image6]: ./examples/architecture.png "Random brightness applied"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -45,37 +45,10 @@ The model.py file contains the code for training and saving the convolution neur
 
 ###Model Architecture and Training Strategy
 ####1. Final Model Architecture
-Layer (type)                     Output Shape          Param #     Connected to                     
-====================================================================================================
-lambda_1 (Lambda)                (None, 32, 32, 3)     0           lambda_input_1[0][0]             
-____________________________________________________________________________________________________
-convolution2d_1 (Convolution2D)  (None, 16, 16, 32)    2432        lambda_1[0][0]                   
-____________________________________________________________________________________________________
-activation_1 (Activation)        (None, 16, 16, 32)    0           convolution2d_1[0][0]            
-____________________________________________________________________________________________________
-convolution2d_2 (Convolution2D)  (None, 8, 8, 16)      4624        activation_1[0][0]               
-____________________________________________________________________________________________________
-activation_2 (Activation)        (None, 8, 8, 16)      0           convolution2d_2[0][0]            
-____________________________________________________________________________________________________
-maxpooling2d_1 (MaxPooling2D)    (None, 4, 4, 16)      0           activation_2[0][0]               
-____________________________________________________________________________________________________
-flatten_1 (Flatten)              (None, 256)           0           maxpooling2d_1[0][0]             
-____________________________________________________________________________________________________
-dropout_1 (Dropout)              (None, 256)           0           flatten_1[0][0]                  
-____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 128)           32896       dropout_1[0][0]                  
-____________________________________________________________________________________________________
-activation_3 (Activation)        (None, 128)           0           dense_1[0][0]                    
-____________________________________________________________________________________________________
-dropout_2 (Dropout)              (None, 128)           0           activation_3[0][0]               
-____________________________________________________________________________________________________
-dense_2 (Dense)                  (None, 128)           16512       dropout_2[0][0]                  
-____________________________________________________________________________________________________
-dense_3 (Dense)                  (None, 1)             129         dense_2[0][0]                    
-====================================================================================================
-Total params: 56,593
-Trainable params: 56,593
-Non-trainable params: 0
+![alt text][image6]
+
+
+
 
 The model contains dropout layers in order to reduce overfitting (model.py line 110 and line 113). 
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 131).
